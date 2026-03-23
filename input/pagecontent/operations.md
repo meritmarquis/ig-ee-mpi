@@ -196,13 +196,17 @@ Sotsiaalsete tunnuste operatsioonid pärivad alati andmed allikregistritest (sõ
 
 ### Seadusliku eeskostja staatus
 
-Andmed päritakse [$legal-guardian](OperationDefinition-patient-legal-guardian.html) operatsiooniga, mis saab kaks parameetrit - viide patsiendile ja eestkoste
+Andmed päritakse [$legal-guardian](OperationDefinition-patient-legal-guardian.html) operatsiooniga, mis saab kaks parameetrit - [patsiendi identifikaator](operations.html#patsienti-identifikaatorid-operatsioonipäringutes) ja eestkoste
 liik SNOMED järgi(eestkostja - 58626002, eestkostetav - 365569001):
 
 Näiteks eestkostetavate leidmine:
 
 ```
 GET {MPI}/Patient/$legal-guardian?patient=Patient/168&legal-status=365569001
+
+GET {MPI}/Patient/$legal-guardian?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255&legal-status=365569001
+
+GET {MPI}/Patient/$legal-guardian?patient.identifier=38912072255&legal-status=365569001
 ```
 
 ning saab vastuseks Observationi:
@@ -305,11 +309,15 @@ Andmed päritakse [$power-of-attorney](OperationDefinition-patient-power-of-atto
 
 Parameetrid:
 
-- patient - viide patsiendile
+- patient - [patsiendi identifikaator](operations.html#patsienti-identifikaatorid-operatsioonipäringutes)
 - guardian-only - kas tagastada ainult eestkostetavad (true). Saab määrata ainult alaealistele patsientidele. Vaikimisi väärtus on false.
 
 ```
 GET {MPI}/Patient/$power-of-attorney?patient=Patient/70505&guardian-only=false
+
+GET {MPI}/Patient/$power-of-attorney?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255&guardian-only=false
+
+GET {MPI}/Patient/$power-of-attorney?patient.identifier=38912072255&guardian-only=false
 ```
 
 ning saab vastuseks on mitu Observation ressursi (samal isikul võib olla mitu hooldusõiguise liiki):
@@ -497,10 +505,14 @@ ning saab vastuseks on mitu Observation ressursi (samal isikul võib olla mitu h
 
 ### Haridus
 
-Andmed päritakse [$education](OperationDefinition-patient-education.html) operatsiooniga, mis saab ühe parameetri - viide patsiendile:
+Andmed päritakse [$education](OperationDefinition-patient-education.html) operatsiooniga, mis saab ühe parameetri - [patsiendi identifikaator](operations.html#patsienti-identifikaatorid-operatsioonipäringutes):
 
 ```
 GET {MPI}/Patient/$education?patient=Patient/3744
+
+GET {MPI}/Patient/$education?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+
+GET {MPI}/Patient/$education?patient.identifier=38912072255
 ```
 
 ning saab vastuseks Observationi
@@ -561,10 +573,14 @@ ning saab vastuseks Observationi
 
 ### Puude määr
 
-Andmed päritakse [$disability](OperationDefinition-patient-disability.html) operatsiooniga, mis saab ühe parameetri - viide patsiendile:
+Andmed päritakse [$disability](OperationDefinition-patient-disability.html) operatsiooniga, mis saab ühe parameetri - [patsiendi identifikaator](operations.html#patsienti-identifikaatorid-operatsioonipäringutes):
 
 ```
 GET {MPI}/Patient/$disability?patient=Patient/7073
+
+GET {MPI}/Patient/$disability?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+
+GET {MPI}/Patient/$disability?patient.identifier=38912072255
 ```
 
 ning saab vastuseks on [Disability](StructureDefinition-ee-mpi-socialhistory-disability.html) Observationi
@@ -629,10 +645,14 @@ ning saab vastuseks on [Disability](StructureDefinition-ee-mpi-socialhistory-dis
 
 ### Teovõime
 
-Andmed päritakse [$legal-status](OperationDefinition-patient-legal-status.html) operatsiooniga, mis saab ühe parameetri - viide patsiendile:
+Andmed päritakse [$legal-status](OperationDefinition-patient-legal-status.html) operatsiooniga, mis saab ühe parameetri - [patsiendi identifikaator](operations.html#patsienti-identifikaatorid-operatsioonipäringutes):
 
 ```
 GET {MPI}/Patient/$legal-status?patient=Patient/874
+
+GET {MPI}/Patient/$legal-status?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+
+GET {MPI}/Patient/$legal-status?patient.identifier=38912072255
 ```
 
 ning saab vastuseks on [LegalStatus](StructureDefinition-ee-mpi-socialhistory-legal-status.html) Observationi
@@ -693,10 +713,14 @@ ning saab vastuseks on [LegalStatus](StructureDefinition-ee-mpi-socialhistory-le
 
 ### Töövõime
 
-Andmed päritakse [$incapacity-for-work](OperationDefinition-patient-incapacity-for-work.html) operatsiooniga, mis saab ühe parameetri - viide patsiendile:
+Andmed päritakse [$incapacity-for-work](OperationDefinition-patient-incapacity-for-work.html) operatsiooniga, mis saab ühe parameetri - [patsiendi identifikaator](operations.html#patsienti-identifikaatorid-operatsioonipäringutes):
 
 ```
 GET {MPI}/Patient/$incapacity-for-work?patient=Patient/7076
+
+GET {MPI}/Patient/$incapacity-for-work?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+
+GET {MPI}/Patient/$incapacity-for-work?patient.identifier=38912072255
 ```
 
 ning saab vastuseks on [IncapacityForWork](StructureDefinition-ee-mpi-socialhistory-incapacity-for-work.html) Observationi
@@ -778,6 +802,21 @@ värskendab andmed vahemälus.
 
 Iga operatsioon mis toetab vahemälu sisaldab parameetri *nocache*. *nocache* parameetri vaikimisi väärtuseks on *false*, s.t. vaikimisi andmed võetakse
 vahemälust. xTee päringu käivitamiseks ilmutatud kujul *nocache* väärtuseks tuleb määrata *true*.
+
+### Patsiendi identifikaatorid operatsioonides
+
+Operatsioonid [$disability](OperationDefinition-patient-disability.html), [$education](OperationDefinition-patient-education.html), [$legal-guardian](OperationDefinition-patient-legal-guardian.html), [$incapacity-for-work](OperationDefinition-patient-incapacity-for-work.html), [$patient-legal-relationship](OperationDefinition-patient-legal-relationship.html), [$legal-status](OperationDefinition-patient-legal-status.html), [$occupation](OperationDefinition-patient-occupation.html) ja [$power-of-attorney](OperationDefinition-patient-power-of-attorney.html) võimaldavad pärida järgmiste patsiendi identifikaatoritega:
+
+- Viide patsiendile ```Patient/1234```
+
+- Eesti isikukood süsteemiga ```patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255```
+
+- Eesti isikukood süsteemita ```patient.identifier=38912072255```
+
+- Eesti isikukood kooloniga ```patient:identifier=https://fhir.ee/sid/pid/est/ni|38912072255```
+
+- Eesti isikukood kooloniga ja süsteemita ```patient:identifier=38912072255```
+
 
 ### Surmateave lisamine
 
