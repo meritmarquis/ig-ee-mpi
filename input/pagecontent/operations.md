@@ -204,9 +204,9 @@ Näiteks eestkostetavate leidmine:
 ```
 GET {MPI}/Patient/$legal-guardian?patient=Patient/168&legal-status=365569001
 
-GET {MPI}/Patient/$legal-guardian?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255&legal-status=365569001
+GET {MPI}/Patient/$legal-guardian?patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944&legal-status=365569001
 
-GET {MPI}/Patient/$legal-guardian?patient.identifier=38912072255&legal-status=365569001
+GET {MPI}/Patient/$legal-guardian?patient.identifier=37408074944&legal-status=365569001
 ```
 
 ning saab vastuseks Observationi:
@@ -315,9 +315,9 @@ Parameetrid:
 ```
 GET {MPI}/Patient/$power-of-attorney?patient=Patient/70505&guardian-only=false
 
-GET {MPI}/Patient/$power-of-attorney?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255&guardian-only=false
+GET {MPI}/Patient/$power-of-attorney?patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944&guardian-only=false
 
-GET {MPI}/Patient/$power-of-attorney?patient.identifier=38912072255&guardian-only=false
+GET {MPI}/Patient/$power-of-attorney?patient.identifier=37408074944&guardian-only=false
 ```
 
 ning saab vastuseks on mitu Observation ressursi (samal isikul võib olla mitu hooldusõiguise liiki):
@@ -510,9 +510,9 @@ Andmed päritakse [$education](OperationDefinition-patient-education.html) opera
 ```
 GET {MPI}/Patient/$education?patient=Patient/3744
 
-GET {MPI}/Patient/$education?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+GET {MPI}/Patient/$education?patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944
 
-GET {MPI}/Patient/$education?patient.identifier=38912072255
+GET {MPI}/Patient/$education?patient.identifier=37408074944
 ```
 
 ning saab vastuseks Observationi
@@ -578,9 +578,9 @@ Andmed päritakse [$disability](OperationDefinition-patient-disability.html) ope
 ```
 GET {MPI}/Patient/$disability?patient=Patient/7073
 
-GET {MPI}/Patient/$disability?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+GET {MPI}/Patient/$disability?patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944
 
-GET {MPI}/Patient/$disability?patient.identifier=38912072255
+GET {MPI}/Patient/$disability?patient.identifier=37408074944
 ```
 
 ning saab vastuseks on [Disability](StructureDefinition-ee-mpi-socialhistory-disability.html) Observationi
@@ -650,9 +650,9 @@ Andmed päritakse [$legal-status](OperationDefinition-patient-legal-status.html)
 ```
 GET {MPI}/Patient/$legal-status?patient=Patient/874
 
-GET {MPI}/Patient/$legal-status?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+GET {MPI}/Patient/$legal-status?patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944
 
-GET {MPI}/Patient/$legal-status?patient.identifier=38912072255
+GET {MPI}/Patient/$legal-status?patient.identifier=37408074944
 ```
 
 ning saab vastuseks on [LegalStatus](StructureDefinition-ee-mpi-socialhistory-legal-status.html) Observationi
@@ -718,9 +718,9 @@ Andmed päritakse [$incapacity-for-work](OperationDefinition-patient-incapacity-
 ```
 GET {MPI}/Patient/$incapacity-for-work?patient=Patient/7076
 
-GET {MPI}/Patient/$incapacity-for-work?patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255
+GET {MPI}/Patient/$incapacity-for-work?patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944
 
-GET {MPI}/Patient/$incapacity-for-work?patient.identifier=38912072255
+GET {MPI}/Patient/$incapacity-for-work?patient.identifier=37408074944
 ```
 
 ning saab vastuseks on [IncapacityForWork](StructureDefinition-ee-mpi-socialhistory-incapacity-for-work.html) Observationi
@@ -809,13 +809,13 @@ Operatsioonid [$disability](OperationDefinition-patient-disability.html), [$educ
 
 - Viide patsiendile ```Patient/1234```
 
-- Eesti isikukood süsteemiga ```patient.identifier=https://fhir.ee/sid/pid/est/ni|38912072255```
+- Eesti isikukood süsteemiga ```patient.identifier=https://fhir.ee/sid/pid/est/ni|37408074944```
 
-- Eesti isikukood süsteemita ```patient.identifier=38912072255```
+- Eesti isikukood süsteemita ```patient.identifier=37408074944```
 
-- Eesti isikukood kooloniga ```patient:identifier=https://fhir.ee/sid/pid/est/ni|38912072255```
+- Eesti isikukood kooloniga ```patient:identifier=https://fhir.ee/sid/pid/est/ni|37408074944```
 
-- Eesti isikukood kooloniga ja süsteemita ```patient:identifier=38912072255```
+- Eesti isikukood kooloniga ja süsteemita ```patient:identifier=37408074944```
 
 
 ### Surmateave lisamine
